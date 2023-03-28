@@ -1,0 +1,20 @@
+version: "3.5"
+services:
+  api:
+    image: sample-express-app
+    build: .
+    networks:
+      - dbLocal
+    ports:
+      - "3001:3000"
+  web-cli:
+    image: sample-express-app
+    networks:
+      - dbLocal
+    command: sh
+volumes:
+  persistent:
+networks:
+  dbLocal:
+    name: dbLocal
+    driver: bridge
